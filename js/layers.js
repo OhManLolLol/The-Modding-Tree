@@ -15,7 +15,7 @@ addLayer("b", {
         exponent: 0.5, // Prestige currency exponent
         gainMult() { // Calculate the multiplier for main currency from bonuses
             mult = new Decimal(1)
-            if (hasUpgrade("b", 14)) mult.times(upgradeEffect("b", 13))
+            if (hasUpgrade("b", 14)) mult.times(upgradeEffect("b", 14))
             return mult
         },
         gainExp() { // Calculate the exponent on main currency from bonuses
@@ -45,7 +45,7 @@ addLayer("b", {
             13: {
                 title: "Currencies are dumb",
                 description: "Stupidity gain is.. TRIPLED!!",
-                cost: new Decimal(75),
+                cost: new Decimal(15),
                 effect() {
                     return new Decimal(3)
                 },
@@ -54,7 +54,7 @@ addLayer("b", {
             14: {
                 title: "Braincells? Really?",
                 description: "Braincell gain is doubled.",
-                cost: new Decimal(150),
+                cost: new Decimal(25),
                 effect() {
                     return new Decimal(2)
                 },
@@ -63,7 +63,7 @@ addLayer("b", {
         },
         row: 0, // Row the layer is in on the tree (0 is the first row)
         hotkeys: [
-            {key: "b", description: "Reset for braincells", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+            {key: "b", description: "B - Reset for braincells", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
         ],
         layerShown(){return true},
 })
