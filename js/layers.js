@@ -72,7 +72,7 @@ addLayer("b", {
                 cost: new Decimal(60),
                 effect() {
                     let poweff = 1
-                    let seff = player["b"].points.pow(0.10).add(1).pow(poweff).log(2)
+                    let seff = player["b"].points.pow(0.25).add(1).pow(poweff).log(2)
                     return seff;
                 },
                 unlocked() { return (hasUpgrade(this.layer, 14)) },
