@@ -30,7 +30,7 @@ addLayer("p", {
                 effect() {
                     return new Decimal(2)
                 },
-                unlocked() { return true }
+                unlocked() { return true },
             },
         },
         row: 0, // Row the layer is in on the tree (0 is the first row)
