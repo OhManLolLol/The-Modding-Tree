@@ -21,8 +21,8 @@ addLayer("p", {
             return new Decimal(1)
         },
         upgrades: {
-            rows: 3,
-            cols: 3,
+            rows: 1,
+            cols: 1,
             11: {
                 title: "Another mod..",
                 description: "Point gain is doubled",
@@ -30,7 +30,7 @@ addLayer("p", {
                 effect() {
                     return new Decimal(2)
                 },
-                unlocked() { true }
+                unlocked() { return true }
             },
         },
         row: 0, // Row the layer is in on the tree (0 is the first row)
