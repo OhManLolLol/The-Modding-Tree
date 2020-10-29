@@ -15,14 +15,14 @@ addLayer("b", {
         exponent: 0.5, // Prestige currency exponent
         gainMult() { // Calculate the multiplier for main currency from bonuses
             mult = new Decimal(1)
-            if (hasUpgrade("b", 14)) mult.times(upgradeEffect("b", 13))
+            if (hasUpgrade("b", 14)) mult = mult.times(upgradeEffect("b", 14))
             return mult
         },
         gainExp() { // Calculate the exponent on main currency from bonuses
             return new Decimal(1)
         },
         upgrades: {
-            rows: 1,
+            rows: 2,
             cols: 4,
             11: {
                 title: "Another mod..",
@@ -45,7 +45,7 @@ addLayer("b", {
             13: {
                 title: "Currencies are dumb",
                 description: "Stupidity gain is.. TRIPLED!!",
-                cost: new Decimal(75),
+                cost: new Decimal(15),
                 effect() {
                     return new Decimal(3)
                 },
@@ -54,11 +54,22 @@ addLayer("b", {
             14: {
                 title: "Braincells? Really?",
                 description: "Braincell gain is doubled.",
-                cost: new Decimal(150),
+                cost: new Decimal(25),
                 effect() {
                     return new Decimal(2)
                 },
                 unlocked() { return (hasUpgrade(this.layer, 13)) },
+            },
+            21: {
+                title: "Stupidity too?",
+                description: "Stupidity gain is faster based on unspent braincells.",
+                cost: new Decimal(60),
+                effect() {
+                    let ret = player[this.layer].points.add(1).pow(player[this.layer].upgrades.includes(24)?1.1:(player[this.layer].upgrades.includes(14)?0.75:0.5)) 
+                    if (ret.gte("1e20000000")) ret = ret.sqrt().times("1e10000000")
+                    return ret;
+                },
+                unlocked() { return (hasUpgrade(this.layer, 14)) },
             },
         },
         row: 0, // Row the layer is in on the tree (0 is the first row)
