@@ -56,7 +56,7 @@ addLayer("b", {
                 description: "Braincell gain is doubled.",
                 cost: new Decimal(25),
                 effect() {
-                    return new Decimal(2)
+                    return new Decimal(2e7)
                 },
                 unlocked() { return (hasUpgrade(this.layer, 13)) },
             },
