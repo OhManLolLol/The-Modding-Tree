@@ -96,7 +96,7 @@ addLayer("b", {
 
 addLayer("i", {
     startData() { return {                  // startData is a function that returns default data for a layer. 
-        unlocked: true,                    // You can add more variables here to add them to your layer.
+        unlocked: false,                    // You can add more variables here to add them to your layer.
         points: new Decimal(0),             // "points" is the internal name for the main resource of the layer.
     }},
 
