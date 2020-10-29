@@ -109,7 +109,7 @@ addLayer("i", {
     
     branches: ["b", "i"],   // A function to return the current value of that resource
 
-    requires: new Decimal(10000),            // The amount of the base needed to  gain 1 of the prestige currency.
+    requires: new Decimal(500),            // The amount of the base needed to  gain 1 of the prestige currency.
                                             // Also the amount required to unlock the layer.
     
     type: "normal",                         // Determines the formula used for calculating prestige currency.
@@ -123,6 +123,6 @@ addLayer("i", {
     },
 
     layerShown() {
-        if (player.b.points >= 10000 || player.i.points >= 1) {return true}
+        if (player.b.points >= 500 || player.i.points >= 1) {return true}
     },             // Returns a bool for if this layer's node should be visible in the tree.
 })
