@@ -29,7 +29,9 @@ addLayer("b", {
                 description: "Stupidity gain is doubled",
                 cost: new Decimal(5),
                 effect() {
-                    return new Decimal(2)
+                    let u1 = new Decimal(2)
+                    if (hasUpgrade("b", 22)) u1 = u1.times(upgradeEffect("b", 22))
+                    return u1;
                 },
                 unlocked() { return true },
             },
@@ -38,7 +40,9 @@ addLayer("b", {
                 description: "Stupidity gain is doubled.. again",
                 cost: new Decimal(10),
                 effect() {
-                    return new Decimal(2)
+                    let u2 = new Decimal(2)
+                    if (hasUpgrade("b", 22)) u2 = u2.times(upgradeEffect("b", 22))
+                    return u2;
                 },
                 unlocked() { return (hasUpgrade(this.layer, 11)) },
             },
@@ -47,7 +51,9 @@ addLayer("b", {
                 description: "Stupidity gain is.. TRIPLED!!",
                 cost: new Decimal(15),
                 effect() {
-                    return new Decimal(3)
+                    let u3 = new Decimal(3)
+                    if (hasUpgrade("b", 22)) u3 = u3.times(upgradeEffect("b", 22))
+                    return u3;
                 },
                 unlocked() { return (hasUpgrade(this.layer, 12)) },
             },
@@ -70,6 +76,15 @@ addLayer("b", {
                     return ret;
                 },
                 unlocked() { return (hasUpgrade(this.layer, 14)) },
+            },
+            22: {
+                title: "What are these names?",
+                description: "Triples 1st row upgrades except 'Braincells? Really?' effects.",
+                cost: new Decimal(750),
+                effect() {
+                    return new Decimal(3)
+                },
+                unlocked() { return (hasUpgrade(this.layer, 21)) },
             },
         },
         row: 0, // Row the layer is in on the tree (0 is the first row)
