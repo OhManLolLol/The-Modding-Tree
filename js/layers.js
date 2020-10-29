@@ -128,6 +128,6 @@ addLayer("i", {
     },
 
     layerShown() {
-        if (player.b.points >= 500 || player.i.points >= 1) {return true}
+        if (player.b.points >= 500 || player.i.points >= 1 || hasUpgrade("b", 22)) {return true}
     },             // Returns a bool for if this layer's node should be visible in the tree.
 })
