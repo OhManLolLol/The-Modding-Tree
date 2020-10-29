@@ -16,6 +16,7 @@ addLayer("b", {
         gainMult() { // Calculate the multiplier for main currency from bonuses
             mult = new Decimal(1)
             if (hasUpgrade("b", 14)) mult = mult.times(upgradeEffect("b", 14))
+            if (player.i.points >= 1) mult = mult.times(player.i.points.pow(3))
             return mult
         },
         gainExp() { // Calculate the exponent on main currency from bonuses
@@ -99,6 +100,10 @@ addLayer("i", {
         unlocked: false,                    // You can add more variables here to add them to your layer.
         points: new Decimal(0),             // "points" is the internal name for the main resource of the layer.
     }},
+    
+    effectDescription() {
+       return "Multiplying stupidity by ${player.i.points.pow(3)}x"
+    },
 
     color: "#FE0102",                       // The color for this layer, which affects many elements
     resource: "intelligence",            // The name of this layer's main prestige resource
@@ -113,7 +118,7 @@ addLayer("i", {
                                             // Also the amount required to unlock the layer.
     
     type: "normal",                         // Determines the formula used for calculating prestige currency.
-    exponent: 2,                          // "normal" prestige gain is (currency^exponent)
+    exponent: 2.5,                          // "normal" prestige gain is (currency^exponent)
 
     gainMult() {                            // Returns your multiplier to your gain of the prestige resource
         return new Decimal(1)               // Factor in any bonuses multiplying gain here
