@@ -16,7 +16,6 @@ addLayer("b", {
         gainMult() { // Calculate the multiplier for main currency from bonuses
             mult = new Decimal(1)
             if (hasUpgrade("b", 14)) mult = mult.times(upgradeEffect("b", 14))
-            if (player.i.points >= 1) mult = mult.times(player.i.points.pow(3))
             return mult
         },
         gainExp() { // Calculate the exponent on main currency from bonuses
@@ -118,7 +117,7 @@ addLayer("i", {
                                             // Also the amount required to unlock the layer.
     
     type: "normal",                         // Determines the formula used for calculating prestige currency.
-    exponent: 2.5,                          // "normal" prestige gain is (currency^exponent)
+    exponent: 5,                          // "normal" prestige gain is (currency^exponent)
 
     gainMult() {                            // Returns your multiplier to your gain of the prestige resource
         return new Decimal(1)               // Factor in any bonuses multiplying gain here
