@@ -71,9 +71,9 @@ addLayer("b", {
                 description: "Stupidity gain is faster based on unspent braincells.",
                 cost: new Decimal(60),
                 effect() {
-                    let ret = player[this.layer].points.add(1).pow(player[this.layer].upgrades.includes(24)?1.1:(player[this.layer].upgrades.includes(14)?0.75:0.5)) 
-                    if (ret.gte("1e20000000")) ret = ret.sqrt().times("1e10000000")
-                    return ret;
+                    let poweff = 1
+                    let seff = player["b"].points.pow(0.25).add(1).pow(poweff).log(2)
+                    return seff;
                 },
                 unlocked() { return (hasUpgrade(this.layer, 14)) },
             },
@@ -96,7 +96,7 @@ addLayer("b", {
 
 addLayer("i", {
     startData() { return {                  // startData is a function that returns default data for a layer. 
-        unlocked: false,                    // You can add more variables here to add them to your layer.
+        unlocked: true,                    // You can add more variables here to add them to your layer.
         points: new Decimal(0),             // "points" is the internal name for the main resource of the layer.
     }},
 
@@ -105,9 +105,9 @@ addLayer("i", {
     row: 1,                                 // The row this layer is on (0 is the first row)
 
     baseResource: "braincells",                 // The name of the resource your prestige gain is based on
-    baseAmount() {return player.points},
+    baseAmount() {return player.b.points},
     
-    branches: ["b"],   // A function to return the current value of that resource
+    branches: ["b", "i"],   // A function to return the current value of that resource
 
     requires: new Decimal(10000),            // The amount of the base needed to  gain 1 of the prestige currency.
                                             // Also the amount required to unlock the layer.
@@ -122,5 +122,7 @@ addLayer("i", {
         return new Decimal(1)
     },
 
-    layerShown() {return true},             // Returns a bool for if this layer's node should be visible in the tree.
+    layerShown() {
+        if (player.b.points >= 10000 || player.i.points >= 1) {return true}
+    },             // Returns a bool for if this layer's node should be visible in the tree.
 })
