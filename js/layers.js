@@ -101,7 +101,7 @@ addLayer("i", {
     }},
     
     effectDescription() {
-       return 'Multiplying stupidity by ${player.i.points.pow(3)}x'
+       return `Multiplying stupidity by ${player.i.points.pow(3)}x`
     },
 
     color: "#FE0102",                       // The color for this layer, which affects many elements
