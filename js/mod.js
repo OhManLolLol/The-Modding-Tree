@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0",
-	name: "Literally nothing",
+	num: "0.1",
+	name: "Multiple fixes to a single upgrade. bruh",
 }
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
@@ -35,7 +35,7 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
-	if (hasUpgrade("p", 11)) gain = gain.times(upgradeEffect("p", 11))
+	if (hasUpgrade("B", 11)) gain = gain.times(upgradeEffect("B", 11))
 	return gain
 }
 
