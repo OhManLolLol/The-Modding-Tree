@@ -81,7 +81,7 @@ addLayer("b", {
             22: {
                 title: "What are these names?",
                 description: "Triples 1st row upgrades except 'Braincells? Really?' effects.",
-                cost: new Decimal(150),
+                cost: new Decimal(80),
                 effect() {
                     return new Decimal(3)
                 },
