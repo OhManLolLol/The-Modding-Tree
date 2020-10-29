@@ -15,7 +15,7 @@ addLayer("b", {
         exponent: 0.5, // Prestige currency exponent
         gainMult() { // Calculate the multiplier for main currency from bonuses
             mult = new Decimal(1)
-            if (hasUpgrade("b", 14)) mult.times(upgradeEffect("b", 14))
+            if (hasUpgrade("b", 14)) mult = mult.times(upgradeEffect("b", 14))
             return mult
         },
         gainExp() { // Calculate the exponent on main currency from bonuses
@@ -56,7 +56,7 @@ addLayer("b", {
                 description: "Braincell gain is doubled.",
                 cost: new Decimal(25),
                 effect() {
-                    return new Decimal(2e7)
+                    return new Decimal(2)
                 },
                 unlocked() { return (hasUpgrade(this.layer, 13)) },
             },
